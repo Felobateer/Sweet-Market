@@ -12,38 +12,55 @@
           Your shopping cart is empty
         </h1>
       </div>
-      <div
-        v-else
-        v-for="item in cartItems"
-        :key="item.id"
-        id="cartItem"
-        class="my-2 flex flex-row relative mx-auto"
-      >
-        <div class="pt-5" id="itemQty">
-          <h1 class="text-xl text-orange-600">{{ item.quantity }}</h1>
-        </div>
-        <div class="flex w-2/5" id="itemName">
-          <div class="productImg" :id="item.id"></div>
-          <h1 class="text-orange-600 text-lg mx-2 mt-6">{{ item.Name }}</h1>
-        </div>
-        <div class="w-1/5 flex" id="qtyControl">
-          <div class="flex-row justify-content">
-            <button
-              @click="decrement(item)"
-              class="bg-red-500 px-3 h-9 rounded-lg hover:bg-red-700"
-            >
-              -
-            </button>
-            <button class="px-2">&euro; {{ item.price }}</button>
-            <button
-              @click="increment(item)"
-              class="bg-green-500 px-3 h-9 rounded-lg hover:bg-green-600"
-            >
-              +
-            </button>
-          </div>
-        </div>
-      </div>
+
+      <table v-else class="mx-auto">
+        <thead>
+          <tr>
+            <td class="text-2xl text-orange-600" id="itemTitle">Quantity</td>
+            <td id="itemPic"></td>
+            <td class="text-2xl text-orange-600" id="itemTitle">Item Name</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in cartItems" :key="item.id" id="cartItem">
+            <td>
+              <h1 class="text-xl text-orange-600" id="itemName">
+                {{ item.quantity }}
+              </h1>
+            </td>
+            <td id="itemPic">
+              <div class="productImg" :id="item.id"></div>
+            </td>
+            <td>
+              <h1 id="itemName" class="text-orange-600 text-lg mx-2 mt-6">
+                {{ item.Name }}
+              </h1>
+            </td>
+            <td>
+              <div class="grid grid-cols-3 gap-0">
+                <button
+                  id="priceTag"
+                  @click="decrement(item)"
+                  class="bg-red-500 px-4 py-2 border -mr-2 rounded hover:bg-red-700"
+                >
+                  -
+                </button>
+                <button class="px-4 py-2" id="priceTag">
+                  &euro; {{ item.price }}
+                </button>
+                <button
+                  id="priceTag"
+                  @click="increment(item)"
+                  class="bg-green-500 px-4 py-2 border -ml-2 rounded rounded-l-none hover:bg-green-700"
+                >
+                  +
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div
       id="shoppingFooter"
@@ -78,10 +95,9 @@ export default {
   computed: {
     ...mapState(["cartItems"]),
     total() {
-      return this.cartItems.reduce(
-        (acc, item) => acc + item.price * item.quantity,
-        0
-      );
+      return this.cartItems
+        .reduce((acc, item) => acc + item.price * item.quantity, 0)
+        .toFixed(2);
     },
   },
   methods: {
@@ -100,7 +116,8 @@ export default {
 </script>
 <style scoped>
 #cart {
-  height: 62vh;
+  height: 50rem;
+  max-width: 1950px;
 }
 
 #cartItem {
@@ -111,10 +128,9 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 5vh;
-  height: 5vh;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-  margin-left: 2vh;
 }
 
 #hc {
@@ -222,21 +238,25 @@ export default {
     height: 320px;
   }
 
-  #shoppinglist div {
-    width: 100%;
-    display: inline-flex;
-    flex-direction: row-reverse;
-    flex-wrap: nowrap;
+  #itemTitle {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
   }
 
-  #qtyControl button {
-    width: max-content;
+  #itemName {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  #priceTag {
+    padding: 0;
+    margin: 0;
   }
 
   #itemName div {
-    width: 6vh;
+    width: 4rem;
     position: absolute;
-    right: 2vh;
+    right: 2rem;
   }
 
   #itemName h1 {
@@ -245,7 +265,7 @@ export default {
   }
 
   #shoppingFooter {
-    height: 12vh;
+    height: 10rem;
   }
 
   #shoppingFooter button {
@@ -260,6 +280,10 @@ export default {
 
   #cartReset {
     left: 10px;
+  }
+
+  #itemPic {
+    display: none;
   }
 }
 </style>

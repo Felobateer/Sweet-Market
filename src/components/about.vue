@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="about">
     <div class="content">
       <section class="history">
         <h2 class="text-3xl text-orange-500 p-5">History</h2>
@@ -134,4 +134,8 @@ export default {
   name: "AboutPage",
 };
 </script>
-<style scoped></style>
+<style scoped>
+#about {
+  max-width: 1950px;
+}
+</style>

@@ -56,9 +56,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#navbar {
+  max-width: 1950px;
+}
+
 #title {
   font-family: "Ysabeau SC", sans-serif;
-  margin-left: 15vh;
+  margin-left: 10rem;
   display: inline-block;
 }
 
@@ -71,7 +75,7 @@ export default {
   height: 80px;
   border-radius: 50%;
   position: relative;
-  margin: 10px 2vh;
+  margin: 10px 3rem;
 }
 
 .router-link-active {

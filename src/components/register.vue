@@ -71,6 +71,7 @@ export default {
 </script>
 <style scoped>
 #registerPage {
-  height: 65vh;
+  height: 50rem;
+  max-width: 1950px;
 }
 </style>

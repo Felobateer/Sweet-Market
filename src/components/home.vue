@@ -10,34 +10,36 @@
   </div>
   <div id="offers" class="flex flex-wrap ml-4">
     <h1 class="text-4xl text-orange-500 w-full mb-6">Our Offers</h1>
-    <div
-      class="container h-96 w-72 p-3 m-4 sm:m-1 relative"
-      v-for="offer in offers"
-      :key="offer.id"
-    >
-      <div class="offerImg" :id="offer.id"></div>
-      <div class="container">
-        <h1 id="productName" class="text-white text-2xl text-orange-600">
-          {{ offer.Name }}
-        </h1>
-        <p class="text-white text-md px-1 text-orange-600">
-          {{ offer.description }}
-        </p>
-        <label
-          for="purchase"
-          class="text-white text-lg text-orange-600 absolute bottom-3 left-3"
-          >&euro; {{ offer.price }}</label
-        >
-        <button
-          @click="handleBuy(offer)"
-          id="purchase"
-          class="bg-orange-500 text-white h-9 rounded-lg absolute bottom-2 right-2 pl-6 group"
-        >
-          Add to cart
-          <span class="pr-2 opacity-0 group-hover:opacity-100"
-            ><i class="fas fa-shopping-cart"></i
-          ></span>
-        </button>
+    <div id="offersList">
+      <div
+        class="container h-96 w-72 p-3 m-4 sm:m-1 relative"
+        v-for="offer in offers"
+        :key="offer.id"
+      >
+        <div class="offerImg" :id="offer.id"></div>
+        <div class="container">
+          <h1 id="productName" class="text-2xl text-orange-600">
+            {{ offer.Name }}
+          </h1>
+          <p class="text-md px-1 text-orange-600">
+            {{ offer.description }}
+          </p>
+          <label
+            for="purchase"
+            class="text-lg text-orange-600 absolute bottom-3 left-3"
+            >&euro; {{ offer.price }}</label
+          >
+          <button
+            @click="handleBuy(offer)"
+            id="purchase"
+            class="bg-orange-500 text-white h-9 rounded-lg absolute bottom-2 right-2 pl-6 group"
+          >
+            Add to cart
+            <span class="pr-2 opacity-0 group-hover:opacity-100"
+              ><i class="fas fa-shopping-cart"></i
+            ></span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -316,7 +318,7 @@ export default {
 <style scoped>
 #intro {
   width: 100%;
-  height: 80vh;
+  height: 50rem;
 }
 
 #leftIntro {
@@ -340,21 +342,27 @@ export default {
   background-size: cover;
 }
 
+#offersList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto;
+}
+
 .offerImg {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 30vh;
-  height: 20vh;
+  width: 16rem;
+  height: 11rem;
 }
 
 .productImg {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 20vh;
-  height: 28vh;
-  margin-left: 2vh;
+  width: 11rem;
+  height: 16rem;
+  margin-left: 2rem;
 }
 
 #w0 {
@@ -456,6 +464,11 @@ export default {
   #offers h1 {
     margin-top: 0;
     padding-top: 0;
+  }
+
+  #offersList {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 </style>

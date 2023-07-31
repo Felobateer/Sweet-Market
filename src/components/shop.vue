@@ -13,7 +13,7 @@
       />
     </div>
   </div>
-  <div id="shop" class="w-screen flex flex-row">
+  <div id="shop" class="w-full flex flex-row">
     <div id="shopFilters" class="w-1/4 pl-7">
       <div class="flex flex-column flex-wrap">
         <h1 class="text-orange-600 font-bold text-xl w-full mx-2 my-4">
@@ -145,13 +145,14 @@
         />
       </div>
     </div>
-    <div class="flex flex-wrap w-3/4 justify-end">
+    <div id="shopItems" class="flex flex-wrap w-3/4 justify-start">
       <div v-if="filteredProducts.length === 0">
         <h1 class="text-orange-600 font-bold text-2xl mr-11">
           No Products found that fit this description
         </h1>
       </div>
       <div
+        id="shopItem"
         v-else
         class="relative h-96 w-72 m-3"
         v-for="product in filteredProducts"
@@ -159,6 +160,7 @@
       >
         <div class="productImg" :id="product.id">
           <span
+            id="discountTag"
             v-if="product.discount"
             class="bg-red-600 text-white rounded-lg float-right mr-2 mt-2 p-1"
             >50%</span
@@ -506,20 +508,24 @@ export default {
 </script>
 <style scoped>
 #shop {
-  min-height: 60vh;
+  min-height: 50rem;
 }
 
 #productName {
   font-family: "Lora", serif;
 }
 
+#shopItems {
+  max-width: 100rem;
+}
+
 .productImg {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 20vh;
-  height: 28vh;
-  margin-left: 2vh;
+  width: 11rem;
+  height: 16rem;
+  margin-left: 2rem;
 }
 
 #hc {
@@ -637,6 +643,41 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     padding: auto;
+  }
+
+  #shopItems {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #shopItem {
+    width: 80%;
+    height: 12.5rem;
+  }
+
+  #shopItem h1 {
+    font-size: 1rem;
+    line-height: 0.9rem;
+  }
+
+  #shopItem label {
+    font-size: 0.8rem;
+    line-height: 0.9rem;
+    bottom: 3.5rem;
+  }
+
+  #shopItem button {
+    padding: 0.2rem;
+  }
+  .productImg {
+    width: 4rem;
+    height: 5rem;
+  }
+
+  #discountTag {
+    width: 2rem;
+    height: 1.3rem;
+    margin: 0;
   }
 }
 </style>

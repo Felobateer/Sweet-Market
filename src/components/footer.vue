@@ -1,5 +1,5 @@
 <template>
-  <div class="h-64 w-screen bg-orange-500">
+  <div id="footer" class="h-64 w-screen bg-orange-500">
     <div class="flex flex-row">
       <div class="w-1/3 h-44 px-7 pt-4">
         <h1 class="text-2xl text-white font-bold">About</h1>
@@ -69,6 +69,10 @@ export default {
 };
 </script>
 <style scoped>
+#footer {
+  max-width: 1950px;
+}
+
 @media (max-width: 450px) {
   div div {
     margin: 0;

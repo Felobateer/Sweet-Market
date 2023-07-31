@@ -25,4 +25,15 @@ export default {
 html {
   overflow-x: hidden;
 }
+
+@media (min-width: 2000px) {
+  body {
+    max-width: 1950px;
+  }
+
+  html {
+    display: flex;
+    justify-content: center;
+  }
+}
 </style>
