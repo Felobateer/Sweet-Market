@@ -12,6 +12,7 @@
     <h1 class="text-4xl text-orange-500 w-full mb-6">Our Offers</h1>
     <div id="offersList">
       <div
+        id="offer"
         class="container h-96 w-72 p-3 m-4 sm:m-1 relative"
         v-for="offer in offers"
         :key="offer.id"
@@ -452,6 +453,10 @@ export default {
 }
 
 @media (max-width: 450px) {
+  #intro {
+    height: 30rem;
+  }
+
   #intropics {
     margin: 10px 0;
     width: 100%;

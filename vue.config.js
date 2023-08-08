@@ -11,4 +11,5 @@ module.exports = {
   configureWebpack: {
     plugins: [new MiniCssExtractPlugin()],
   },
+  publicPath: "./",
 };
