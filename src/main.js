@@ -4,6 +4,7 @@ import router from "./router";
 import Vuex from "vuex";
 
 const store = new Vuex.Store({
+  // test
   state: {
     registered: false,
     cartItems: [],
